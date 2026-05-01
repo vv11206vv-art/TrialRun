@@ -47,4 +47,35 @@ function bot(message){
     }
 }
 
+function send(){
+    let Input = document.getElementById("input");
+    let chat = document.getElementById("chat");
+
+    let userInput = Input.value
+    let reply = bot(userInput)
+    
+    let divInput = document.createElement("div");
+    let divresponse = document.createElement("div");
+    
+    divInput.innerText = userInput;
+    divresponse.innerText = reply;
+
+    divInput.className = "user";
+    divresponse.className = "bot";
+
+    chat.appendChild(divInput)
+    chat.appendChild(divresponse)
+
+    Input.value = ""
+    chat.scrollTop = chat.scrollHeight;
+
+}
+input.addEventListener("keydown", enterFun);
+
+function enterFun(event){
+    if (event.key === "Enter"){
+        send();
+    }
+}
+
 greeting()
